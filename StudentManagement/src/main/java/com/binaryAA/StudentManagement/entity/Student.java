@@ -1,4 +1,4 @@
-package entity;
+package com.binaryAA.StudentManagement.entity;
 
 import jakarta.persistence.*;
 
@@ -17,7 +17,7 @@ public class Student {
 
     private double gpa;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Teacher teacher;
 
 
