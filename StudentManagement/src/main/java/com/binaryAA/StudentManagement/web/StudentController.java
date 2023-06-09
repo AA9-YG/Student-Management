@@ -5,10 +5,7 @@ import com.binaryAA.StudentManagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +24,21 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudent(@PathVariable Long id) {
-        return new ResponseEntity<>(studentService.getStudentById(id), HttpStatus.OK);
+        return new ResponseEntity<>(studentService.getStudent(id), HttpStatus.OK);
+    }
+
+    @PostMapping()
+    public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
+        return new ResponseEntity<>(studentService.saveStudent(student), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        return new ResponseEntity<>(studentService.updateStudent(id, student), HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Student> deleteStudent(@PathVariable Long id) {
+        return new ResponseEntity<>(studentService.deleteStudent(id), HttpStatus.NO_CONTENT);
     }
 }
