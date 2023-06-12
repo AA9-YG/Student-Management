@@ -29,7 +29,7 @@ public class SecurityConfig {
         httpSecurity
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.POST, "api/v1/car")
+                .requestMatchers(HttpMethod.POST, "api/v1/student")
                 .hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE)
                 .hasRole("ADMIN")
