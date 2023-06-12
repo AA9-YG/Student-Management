@@ -2,8 +2,10 @@ package com.binaryAA.StudentManagement;
 
 import com.binaryAA.StudentManagement.entity.Student;
 import com.binaryAA.StudentManagement.entity.Teacher;
+import com.binaryAA.StudentManagement.entity.User;
 import com.binaryAA.StudentManagement.repository.StudentRepository;
 import com.binaryAA.StudentManagement.repository.TeacherRepository;
+import com.binaryAA.StudentManagement.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class StudentManagementApplication implements CommandLineRunner {
 
 	@Autowired
 	private TeacherRepository teacherRepo;
+
+	@Autowired
+	private UserRepository userRepo;
 
 	private static final Logger logger = LoggerFactory.getLogger(StudentManagementApplication.class);
 
@@ -45,5 +50,11 @@ public class StudentManagementApplication implements CommandLineRunner {
 
 		studentRepo.saveAll(students);
 		teacherRepo.saveAll(teachers);
+
+//		userRepo.save(new User("user", "$2y$10$ScjYnlgtYxHama9pHlpZAekHWCgx.q.myFuIdyZkYDkaBfnTBbE6q", "USER"));
+//		userRepo.save(new User("admin", "$2y$10$h26Vc5Iz4GiFN3RGptjUSefuaC5EXy.dUJB6wnmtsqG99ax3/ovma", "ADMIN"));
+		userRepo.save(new User("user", "userPass", "USER"));
+		userRepo.save(new User("admin", "adminPass", "ADMIN"));
+
 	}
 }
